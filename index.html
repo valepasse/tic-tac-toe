@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="styles/overlays.css" />
     <link rel="stylesheet" href="styles/configuration.css" />
     <link rel="stylesheet" href="styles/game.css" />
+    <script src="scripts/config.js" defer></script>
+    <script src="scripts/game.js" defer></script>
+    <script src="scripts/app.js" defer></script>
   </head>
   <body>
     <div id="backdrop"></div>
@@ -27,10 +30,13 @@
         <form>
           <div class="form-control">
             <label for="player-name">Player Name</label>
-            <input type="text" id="player-name" name="player-name" />
+            <input type="text" id="player-name" name="player-name" required />
           </div>
+          <p id="config-errors" class="error"></p>
           <div>
-            <button type="button" class="btn btn-alt">Cancel</button>
+            <button type="reset" id="cancel-config-btn" class="btn btn-alt">
+              Cancel
+            </button>
             <button type="submit" class="btn">Confirm</button>
           </div>
         </form>
