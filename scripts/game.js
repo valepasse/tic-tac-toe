@@ -1,8 +1,29 @@
+function resetGameStatus() {
+  activePlayer = 0;
+  currentRound = 1;
+  document.querySelector("#game-over h2").innerHTML =
+    'You won, <span id="winner-name"># WINNER PLAYER NAME #</span>!';
+  gameOverElement.style.display = "none";
+
+  let gameBoardIndex = 0;
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 3; col++) {
+      gameData[row][col] = 0;
+      const gameBoardItem = gameBoardElement.children[gameBoardIndex];
+      gameBoardItem.textContent = "";
+      gameBoardItem.classList.remove("disabled");
+      gameBoardIndex++;
+    }
+  }
+}
+
 function startNewGame() {
   if (!players[0].name || !players[1].name) {
     alert("Please set custom player names for both players!");
     return;
   }
+
+  resetGameStatus();
 
   gameAreaElement.style.display = "block";
   activePlayerNameElement.textContent = players[activePlayer].name;
@@ -97,7 +118,8 @@ function endGame(winnerId) {
   if (winnerId === -1) {
     document.querySelector("#game-over h2").textContent = "It's a draw!";
   } else {
-    winnerNameElement.textContent = players[winnerId - 1].name;
+    document.getElementById("winner-name").textContent =
+      players[winnerId - 1].name;
   }
   gameOverElement.style.display = "block";
 }
