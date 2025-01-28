@@ -11,6 +11,8 @@ const players = [
   { name: "", symbol: "O" },
 ];
 
+let currentRound = 1;
+
 const playerConfigOverlayElement = document.getElementById("config-overlay");
 const backdropElement = document.getElementById("backdrop");
 const gameAreaElement = document.getElementById("active-game");
@@ -35,6 +37,5 @@ startNewGameBtnElement.addEventListener("click", startNewGame);
 formElement.addEventListener("submit", savePlayerConfig);
 
 for (const gameFieldElement of gameFieldElements) {
-  gameFieldElement.textContent = "";
   gameFieldElement.addEventListener("click", selectGameField);
 }
