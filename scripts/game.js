@@ -19,12 +19,19 @@ function switchPlayer() {
 
 function selectGameField(event) {
   const selectedGameFieldElement = event.target;
+  const selectedRow = +selectedGameFieldElement.dataset.row - 1;
+  const selectedColumn = +selectedGameFieldElement.dataset.col - 1;
 
-  if (selectedGameFieldElement.classList.contains("disabled")) {
+  if (gameData[selectedRow][selectedColumn] > 0) {
+    alert("Please select an empty field!");
     return;
   }
 
-  selectedGameFieldElement.textContent = players[activePlayer].symbol;
+  const activeSymbol = players[activePlayer].symbol;
+  selectedGameFieldElement.textContent = activeSymbol;
   selectedGameFieldElement.classList.add("disabled");
+
+  gameData[selectedRow][selectedColumn] = activePlayer + 1;
+
   switchPlayer();
 }
