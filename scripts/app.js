@@ -17,6 +17,8 @@ const playerConfigOverlayElement = document.getElementById("config-overlay");
 const backdropElement = document.getElementById("backdrop");
 const gameAreaElement = document.getElementById("active-game");
 const activePlayerNameElement = document.getElementById("active-player-name");
+const gameOverElement = document.getElementById("game-over");
+const winnerNameElement = document.getElementById("winner-name");
 
 const formElement = document.querySelector("form");
 const errorsOutuptElement = document.getElementById("config-errors");

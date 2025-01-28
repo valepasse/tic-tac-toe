@@ -33,8 +33,11 @@ function selectGameField(event) {
 
   gameData[selectedRow][selectedColumn] = activePlayer + 1;
 
-  const winner = checkForGameOver();
-  console.log(winner);
+  const winnerId = checkForGameOver();
+  if (winnerId !== 0) {
+    endGame(winnerId);
+    return;
+  }
 
   currentRound++;
   switchPlayer();
@@ -88,4 +91,13 @@ function checkForGameOver() {
 
   // Still no winner
   return 0;
+}
+
+function endGame(winnerId) {
+  if (winnerId === -1) {
+    document.querySelector("#game-over h2").textContent = "It's a draw!";
+  } else {
+    winnerNameElement.textContent = players[winnerId - 1].name;
+  }
+  gameOverElement.style.display = "block";
 }
