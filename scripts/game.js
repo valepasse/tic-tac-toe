@@ -1,4 +1,5 @@
 function resetGameStatus() {
+  gameIsOver = false;
   activePlayer = 0;
   currentRound = 1;
   document.querySelector("#game-over h2").innerHTML =
@@ -39,6 +40,10 @@ function switchPlayer() {
 }
 
 function selectGameField(event) {
+  if (gameIsOver) {
+    return;
+  }
+
   const selectedGameFieldElement = event.target;
   const selectedRow = +selectedGameFieldElement.dataset.row - 1;
   const selectedColumn = +selectedGameFieldElement.dataset.col - 1;
@@ -122,4 +127,5 @@ function endGame(winnerId) {
       players[winnerId - 1].name;
   }
   gameOverElement.style.display = "block";
+  gameIsOver = true;
 }

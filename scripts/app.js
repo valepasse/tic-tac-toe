@@ -12,6 +12,7 @@ const players = [
 ];
 
 let currentRound = 1;
+let gameIsOver = false;
 
 const playerConfigOverlayElement = document.getElementById("config-overlay");
 const backdropElement = document.getElementById("backdrop");
